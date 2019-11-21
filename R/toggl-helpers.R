@@ -75,3 +75,63 @@ get.toggl.groups <- function(toggl_token, workspace_id, verbose = FALSE) {
 }
 
 
+#' @export
+get.group.details <- function(toggl_token, workspace_id, group, since = Sys.Date() - 7, until = Sys.Date(), page = 1, verbose = FALSE) {
+  username <- toggl_token
+  password <- "api_token"
+
+  base <- "https://toggl.com/reports/api"
+  endpoint <- "v2/details?"
+
+  what <- paste("workspace_id=", workspace_id, sep = "")
+  what <- paste(what, "&since=", since, "&until=", until, sep = "")
+  what <- paste(what, "&user_agent=api_test", sep = "")
+  what <- paste(what, "&members_of_group_ids=", group, sep = "")
+  what <- paste(what, "&billable=both", sep = "")
+  what <- paste(what, "&page=", page, sep = "")
+
+  call <- paste(base, endpoint, sep = "/")
+  call <- paste(call, what, sep = "")
+
+  print(call)
+
+  if (verbose) {
+    result <- GET(call, authenticate(username, password), verbose())
+  } else {
+    result <- GET(call, authenticate(username, password))
+  }
+  return(result)
+}
+
+#' @export
+get.group.data <- function(toggl_token, workspace_id, group, verbose = FALSE) {
+  page <- 1
+
+  not.done <- TRUE
+
+  while (not.done) {
+    json.response <- get.group.details(toggl_token, workspace_id, group, page = page)
+    print(json.response)
+    if (json.response$status_code == 200) {
+      response <- fromJSON(content(json.response, "text", encoding = 'UTF-8'))
+      print(summary(response))
+      print(rownames(response$data))
+      print(response$total_count)
+      print(length(response$data))
+      if (length(response$data) > 0) {
+        if (page == 1) {
+          data.response <- data.frame(response$data)
+        } else {
+          data.response <- rbind(data.response, response$data)
+        }
+      } else {
+        not.done <- FALSE
+      }
+    } else {
+      not.done <- FALSE
+    }
+    page <- page + 1
+    Sys.sleep(1)
+  }
+  return(data.response)
+}
