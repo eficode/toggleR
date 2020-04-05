@@ -45,10 +45,10 @@ jobs:
             if [ "$CIRCLE_BRANCH" == "master" ]; then
               cd toggleR/docker-build
               version=$(head -1 ../version.r)
-              docker build  -t praqma/toggler:$version .
+              docker build  -t $DOCKER_USER/toggler:$version .
               docker images
               docker login -u $DOCKER_USER -p $DOCKER_TOKEN
-              docker push praqma/toggler:$version
+              docker push $DOCKER_USER/toggler:$version
             fi
 
       - store_artifacts:

@@ -2,7 +2,7 @@
 
 ## Building
 
-[![CircleCI](https://circleci.com/gh/Praqma/toggleR/tree/master.svg?style=svg)](https://circleci.com/gh/Praqma/toggleR/tree/master)
+[![CircleCI](https://circleci.com/gh/drBosse/toggleR/tree/master.svg?style=svg)](https://circleci.com/gh/drBosse/toggleR/tree/master)
 
 ## Dependencies
 

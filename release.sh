@@ -43,13 +43,11 @@ cat << EOF > release.json
 EOF
 
 # Create the release
-curl -X POST --data-binary @release.json -o response.json -H "Authorization: token $TOGGLER_TOKEN" -H "Content-Type: application/json" https://api.github.com/repos/Praqma/toggleR/releases
+curl -X POST --data-binary @release.json -o response.json -H "Authorization: token $TOGGLER_TOKEN" -H "Content-Type: application/json" https://api.github.com/repos/drBosse/toggleR/releases
 
 # Determine the upload URL from the response
 url=$(cat response.json | grep \"upload_url\" | sed 's/[",]//g' | sed 's/upload_url://' | sed 's/{.*}//')
 echo "Upload URL: $url"
-
-#curl -H "Authorization: token $TOGGLER_TOKEN" https://api.github.com/repos/Praqma/toggleR/releases
 
 # Upload the R pkg
 curl -X POST --data-binary @$rpkg -H "Authorization: token $TOGGLER_TOKEN" -H "Content-Type: application/octet-stream" $url?name=$rpkg
