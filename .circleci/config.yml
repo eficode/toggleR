@@ -45,7 +45,7 @@ jobs:
             if [ "$CIRCLE_BRANCH" == "master" ]; then
               cd toggleR/docker-build
               version=$(head -1 ../version.r)
-              docker build  -t $DOCKER_USER/toggler:$version .
+              docker build  --build-arg DOCKER_USER -t $DOCKER_USER/toggler:$version .
               docker images
               docker login -u $DOCKER_USER -p $DOCKER_TOKEN
               docker push $DOCKER_USER/toggler:$version
