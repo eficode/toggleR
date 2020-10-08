@@ -179,6 +179,7 @@ get.toggl.group.data <- function(toggl_token, workspace_id, group, since = Sys.D
     }
   start.date <- start.date + batch.size
   batch <- batch + 1
+  Sys.sleep(1)
   }
   return(data.response)
 }
