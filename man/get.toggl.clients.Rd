@@ -23,10 +23,11 @@ Fetch a list of clients from toggl.
 get.toggl.clients(Sys.getenv("TOGGL_TOKEN"), Sys.getenv("TOGGL_WORKSPACE"))
 }
 \seealso{
-Other get.toggl: \code{\link{get.toggl.group.data}},
-  \code{\link{get.toggl.groups}},
-  \code{\link{get.toggl.v2.group.details}},
-  \code{\link{get.toggl.v8.data}},
-  \code{\link{get.toggl.v8}}
+Other get.toggl: 
+\code{\link{get.toggl.group.data}()},
+\code{\link{get.toggl.groups}()},
+\code{\link{get.toggl.v2.group.details}()},
+\code{\link{get.toggl.v8.data}()},
+\code{\link{get.toggl.v8}()}
 }
 \concept{get.toggl}

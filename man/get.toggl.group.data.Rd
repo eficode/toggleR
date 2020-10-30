@@ -4,8 +4,14 @@
 \alias{get.toggl.group.data}
 \title{Fetch the detailed entries for a group during a specified time interval}
 \usage{
-get.toggl.group.data(toggl_token, workspace_id, group, since = Sys.Date()
-  - 7, until = Sys.Date(), verbose = FALSE)
+get.toggl.group.data(
+  toggl_token,
+  workspace_id,
+  group,
+  since = Sys.Date() - 7,
+  until = Sys.Date(),
+  verbose = FALSE
+)
 }
 \arguments{
 \item{toggl_token}{A toggl API token to access https://toggl.com.}
@@ -27,10 +33,11 @@ A data frame with the collected entries for the wanted \code{group}.
 Fetch the detailed entries for a group during a specified time interval
 }
 \seealso{
-Other get.toggl: \code{\link{get.toggl.clients}},
-  \code{\link{get.toggl.groups}},
-  \code{\link{get.toggl.v2.group.details}},
-  \code{\link{get.toggl.v8.data}},
-  \code{\link{get.toggl.v8}}
+Other get.toggl: 
+\code{\link{get.toggl.clients}()},
+\code{\link{get.toggl.groups}()},
+\code{\link{get.toggl.v2.group.details}()},
+\code{\link{get.toggl.v8.data}()},
+\code{\link{get.toggl.v8}()}
 }
 \concept{get.toggl}

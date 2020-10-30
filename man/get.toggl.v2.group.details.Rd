@@ -4,9 +4,15 @@
 \alias{get.toggl.v2.group.details}
 \title{Fetch a page of entries for a group using the V2 API}
 \usage{
-get.toggl.v2.group.details(toggl_token, workspace_id, group,
-  since = Sys.Date() - 7, until = Sys.Date(), page = 1,
-  verbose = FALSE)
+get.toggl.v2.group.details(
+  toggl_token,
+  workspace_id,
+  group,
+  since = Sys.Date() - 7,
+  until = Sys.Date(),
+  page = 1,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{toggl_token}{A toggl API token to access https://toggl.com.}
@@ -30,10 +36,11 @@ A httr response object with the paged data for the wanted \code{group}.
 Fetch a page of entries for a group using the V2 API
 }
 \seealso{
-Other get.toggl: \code{\link{get.toggl.clients}},
-  \code{\link{get.toggl.group.data}},
-  \code{\link{get.toggl.groups}},
-  \code{\link{get.toggl.v8.data}},
-  \code{\link{get.toggl.v8}}
+Other get.toggl: 
+\code{\link{get.toggl.clients}()},
+\code{\link{get.toggl.group.data}()},
+\code{\link{get.toggl.groups}()},
+\code{\link{get.toggl.v8.data}()},
+\code{\link{get.toggl.v8}()}
 }
 \concept{get.toggl}
